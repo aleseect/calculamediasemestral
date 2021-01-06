@@ -31,8 +31,9 @@ public class CalculaMediaSemestral {
                 menor = notas[posMenor];//se for menor que o valor da variavel, passa a ser a nova pos
             }
         }
-        System.out.println("maior numero " +maior);
-        System.out.println("menor numero" +menor);
+        System.out.println("/***** RESULTADOS *****/ ");
+        System.out.println("A maior nota é " +maior);
+        System.out.println("A menor nota é " +menor);
 
         int primeiroBimestre = (notas[0] + notas[1] + notas[2])/3 ;
         int segundoBimestre = (notas[3] + notas[4] + notas[5])/3;
