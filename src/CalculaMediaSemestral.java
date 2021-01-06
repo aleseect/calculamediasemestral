@@ -5,32 +5,48 @@ public class CalculaMediaSemestral {
     public static void main (String[]args){
         Scanner meuScanner = new Scanner(System.in);//instancia o obj
 
-        System.out.println("****** SISTEMA DE GESTÃO DE CÁLCULO DA MÉDIA SEMESTRAL *******");
-        System.out.println("Insira o nome da primeira aluna ");
+        //Variaveis
+        int menor =0, maior=0; //comparativa
+        int tamanho = 6; //tamanho do vetor
+        int pos,posMenor;//posicao do vetor
 
-        String nomePrimeraAluna = meuScanner.nextLine();
-        System.out.println("Insira primeira nota bimestral");
-        Float n1 = meuScanner.nextFloat();
-        System.out.println("Insira a segunda nota bimestral");
-        Float n2 = meuScanner.nextFloat();
+        int notas[] = new int[tamanho]; //declara vetor
 
-        float mediaAluna1 = (n1 + n2) /2;
-        System.out.println("A média da aluna "+nomePrimeraAluna+ " é " +mediaAluna1);
+        System.out.println("/****** Gestão de Notas Semestrais ******/");
+        System.out.println("Digite a nota da prova, projeto e exercícios referente ao 1º e 2º bimestre");
+        for(pos=0; pos<tamanho;pos++){
 
-        // Dados da Aluna 2
+            System.out.printf("Digite a%2da. nota :",(pos+1));
+            notas[pos] = meuScanner.nextInt();
+            //armazena o maior numero
+            if(notas[pos] > maior){
+               maior = notas[pos];
+            }
+        }
+       menor = maior; //o valor maior é atribuido ao menor, entra na condicional
 
-        System.out.println("Insira o nome da segunda aluna ");
+        //repetição menor valor
+        for(posMenor=0; posMenor<tamanho;posMenor++){
+            if(notas[posMenor] < menor){//pega os valores digitados e compara com a variavel 'menor'
+                menor = notas[posMenor];//se for menor que o valor da variavel, passa a ser a nova pos
+            }
+        }
+        System.out.println("maior numero " +maior);
+        System.out.println("menor numero" +menor);
 
-        String nomeSegundaAluna = meuScanner.nextLine();
-        System.out.println("Insira a primeira nota bimestral");
-        Float n3 = meuScanner.nextFloat();
-        System.out.println("Insira a segunda nota bimestral");
-        Float n4 = meuScanner.nextFloat();
+        int primeiroBimestre = (notas[0] + notas[1] + notas[2])/3 ;
+        int segundoBimestre = (notas[3] + notas[4] + notas[5])/3;
+        int media = (primeiroBimestre + segundoBimestre) /2;
 
-        float mediaAluna2 = (n3+n4)/2;
-        System.out.println("A média da aluna" +nomeSegundaAluna+ " é " +mediaAluna2);
-
-        //Dados da Aluna 3
+        if(media >= 8){
+            System.out.println("Aluna aprovada com média de " +media);
+        }
+        if(media < 7.9 & media >5){
+            System.out.println("Aluna terá que realizar Avaliação Final, média atual " +media);
+        }
+        else{
+            System.out.println("Aluna reprovada com média " +media);
+        }
 
     }
 }
